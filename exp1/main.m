@@ -59,7 +59,7 @@ title('正弦序列')
 xlabel('n')
 ylabel('x(n)')
 grid on
-un = 1 : 3 : length(n)
+un = 1 : 33 : length(n) % 此处修改频率
 xn = x_sin([un]);
 subplot(2, 1, 2)
 stem(un - 1, xn)
@@ -186,34 +186,34 @@ xlabel('n');
 ylabel('y(n)');
 grid;
 
-% 数字信号处理
-clc;
-clear;
-[yy, fs] = audioread('final.wav');
-y = yy(:, 1);
-sound(y, fs);
-py = fft(y);
-figure(1);
-subplot(1, 2, 1), plot(1:length(y), y)
-subplot(1, 2, 2), plot(1:length(py)/2, py(1:length(py)/2))
-title('原始音频')
+% % 数字信号处理 byd实验不一样这个不用做
+% clc;
+% clear;
+% [yy, fs] = audioread('final.wav');
+% y = yy(:, 1);
+% sound(y, fs);
+% py = fft(y);
+% figure(1);
+% subplot(1, 2, 1), plot(1:length(y), y)
+% subplot(1, 2, 2), plot(1:length(py)/2, py(1:length(py)/2))
+% title('原始音频')
 
-[b, a] = butter(9, 0.25, 'high');
-yh = filter(b, a, y);
-sound(yh, fs)
-pyh = fft(yh);
-figure(2);
-subplot(1, 2, 1), plot(1:length(yh), yh)
-subplot(1, 2, 2), plot(1:length(pyh)/2, pyh(1:length(pyh)/2))
-title('高通滤波后')
-audiowrite('final_high.wav', yh, fs)
+% [b, a] = butter(9, 0.25, 'high');
+% yh = filter(b, a, y);
+% sound(yh, fs)
+% pyh = fft(yh);
+% figure(2);
+% subplot(1, 2, 1), plot(1:length(yh), yh)
+% subplot(1, 2, 2), plot(1:length(pyh)/2, pyh(1:length(pyh)/2))
+% title('高通滤波后')
+% audiowrite('final_high.wav', yh, fs)
 
-[b, a] = butter(9, 0.05, 'low');
-yl = filter(b, a, y);
-sound(yl, fs)
-pyl = fft(yl);
-figure(3);
-subplot(1, 2, 1), plot(1:length(yl), yl)
-subplot(1, 2, 2), plot(1:length(pyl)/2, pyl(1:length(pyl)/2))
-title('低通滤波后')
-audiowrite('final_low.wav', yl, fs)
+% [b, a] = butter(9, 0.05, 'low');
+% yl = filter(b, a, y);
+% sound(yl, fs)
+% pyl = fft(yl);
+% figure(3);
+% subplot(1, 2, 1), plot(1:length(yl), yl)
+% subplot(1, 2, 2), plot(1:length(pyl)/2, pyl(1:length(pyl)/2))
+% title('低通滤波后')
+% audiowrite('final_low.wav', yl, fs)
